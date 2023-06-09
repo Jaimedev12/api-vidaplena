@@ -181,7 +181,7 @@ class MainController {
         }
       }
 
-      async getPamByDoctorId(req, res) {
+      async getPamsByDoctorId(req, res) {
         console.log("Get Pam by doctor id");
         console.log(req.params.id);
         if (req.params.id != null) {
