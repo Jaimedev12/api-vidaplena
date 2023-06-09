@@ -21,7 +21,7 @@ app.use(cors({
 
 
 // ------------------------ Routes ------------------------
-app.use('/api', routes);
+app.use('/', routes);
 
 
 let port = 3006;

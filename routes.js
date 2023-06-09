@@ -6,7 +6,7 @@ const express = require('express');
 router = express.Router();
 
 // ----------------- Rutas -----------------
-router.post('/', (req, res) => {
+router.get('/', (req, res) => {
     res.send("Hello World!");
 });
 
