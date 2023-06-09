@@ -1,13 +1,13 @@
 const mysql = require("../database/db");
 
 class MainController {
-  async addRole(req, res) {
-    console.log("Add Role");
+  async addGender(req, res) {
+    console.log("Add Gender");
     if (
-      req.body.role != null
+      req.body.gender != null
     ) {
-      let role = req.body.role;
-      var sql = `call sp_add_role('${role}');`;
+      let gender = req.body.gender;
+      var sql = `call sp_add_gender('${gender}');`;
       mysql.query(sql, (error, data, fields) => {
         if (error) {
           res.status(500);
@@ -17,22 +17,22 @@ class MainController {
           console.log(data);
           res.json({
             status: 200,
-            message: "Role uploaded successfully",
+            message: "Gender uploaded successfully",
             affectedRows: data.affectedRows,
           });
         }
       });
     } else {
-      res.send("Por favor llena todos los datos: \n role");
-      console.log("Por favor llena todos los datos: \n role");
+      res.send("Por favor llena todos los datos: \n gender");
+      console.log("Por favor llena todos los datos: \n gender");
     }
   }
 
-  async deleteRoleById(req, res) {
-    console.log("Delete Role");
+  async deleteGenderById(req, res) {
+    console.log("Delete Gender");
     if (req.params.id != null) {
       let id = req.params.id;
-      var sql = `call sp_delete_role_by_id('${id}');`;
+      var sql = `call sp_delete_gender_by_id('${id}');`;
       mysql.query(sql, (error, data, fields) => {
         if (error) {
           res.status(500);
@@ -42,7 +42,7 @@ class MainController {
           console.log(data);
           res.json({
             status: 200,
-            message: "Role deleted successfully",
+            message: "Gender deleted successfully",
             affectedRows: data.affectedRows,
           });
         }
@@ -53,15 +53,15 @@ class MainController {
     }
   }
 
-  async editRoleById(req, res) {
-    console.log("Edit Role");
+  async editGenderById(req, res) {
+    console.log("Edit gender");
     if (
       req.params.id != null &&
-      req.body.role != null
+      req.body.gender != null
     ) {
       let id = req.params.id;
-      let role = req.body.role;
-      var sql = `call sp_edit_role_by_id('${id}','${role}');`;
+      let gender = req.body.gender;
+      var sql = `call sp_edit_gender_by_id('${id}','${gender}');`;
       mysql.query(sql, (error, data, fields) => {
         if (error) {
           res.status(500);
@@ -71,48 +71,48 @@ class MainController {
           console.log(data);
           res.json({
             status: 200,
-            message: "Role edited successfully",
+            message: "Gender edited successfully",
             affectedRows: data.affectedRows,
           });
         }
       });
     } else {
-      res.send("Por favor llena todos los datos: \n id, role");
-      console.log("Por favor llena todos los datos: \n id, role");
+      res.send("Por favor llena todos los datos: \n id, gender");
+      console.log("Por favor llena todos los datos: \n id, gender");
     }
   }
 
-  async getRoles(req, res) {
-    console.log("Get Roles");
-    var sql = `call sp_get_roles();`;
+  async getGenders(req, res) {
+    console.log("Get Genders");
+    var sql = `call sp_get_genders();`;
     mysql.query(sql, (error, data, fields) => {
       if (error) {
         res.status(500);
         res.send(error.message);
         console.log(error.message);
       } else {
-        console.log("Roles listed successfully");
+        console.log("Genders listed successfully");
         res.json({
-          roles: data[0],
+          genders: data[0],
         });
       }
     });
   }
 
-  async getRoleById(req, res) {
-    console.log("Get Role by Id");
+  async getGenderById(req, res) {
+    console.log("Get Gender by Id");
     if (req.params.id != null) {
       let id = req.params.id;
-      var sql = `call sp_get_role_by_id('${id}');`;
+      var sql = `call sp_get_gender_by_id('${id}');`;
       mysql.query(sql, (error, data, fields) => {
         if (error) {
           res.status(500);
           res.send(error.message);
           console.log(error.message);
         } else {
-          console.log("Role listed successfully");
+          console.log("Gender listed successfully");
           res.json({
-            role: data[0],
+            gender: data[0],
           });
         }
       });
@@ -124,5 +124,5 @@ class MainController {
 
 }
 
-const roleController = new MainController();
-module.exports = roleController;
+const genderController = new MainController();
+module.exports = genderController;

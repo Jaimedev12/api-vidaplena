@@ -1,7 +1,7 @@
 const express = require('express');
 const pamController = require('./controllers/pamController');
 const roleController = require('./controllers/roleController');
-const personController = require('./controllers/personController');
+const genderController = require('./controllers/genderController');
 
 // ----------------- Controllers -----------------
 //const {test} = require('./controllers/testController');
@@ -38,5 +38,11 @@ router.post('/add-role', roleController.addRole);
 router.put('/edit-role/:id', roleController.editRoleById);
 router.delete('/delete-role/:id', roleController.deleteRoleById);
 
+
+router.get('/get-genders', genderController.getGenders);
+router.get('/get-gender/:id', genderController.getGenderById);
+router.post('/add-gender', genderController.addGender);
+router.put('/edit-gender/:id', genderController.editGenderById);
+router.delete('/delete-gender/:id', genderController.deleteGenderById);
 
 module.exports = router;
