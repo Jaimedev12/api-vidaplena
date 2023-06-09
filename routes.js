@@ -7,7 +7,7 @@ router = express.Router();
 
 // ----------------- Rutas -----------------
 router.post('/', (req, res) => {
-    res.send("Hello World");
+    res.send("Hello World!");
 });
 
 module.exports = router;
