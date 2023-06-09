@@ -10,6 +10,12 @@ router = express.Router();
 router.get('/', (req, res) => {
     res.send("Hello World!");
 });
-router.get('/pams', pamController.getPams);
+// pam Controller
+router.get('/get-pams', pamController.getPams);
+router.get('/get-pam/:id', pamController.getPam);
+router.post('/add-pam', pamController.addPam);
+router.put('/edit-pam/:id', pamController.editPam);
+router.delete('/delete-pam/:id', pamController.deletePam);
 
+//person controller
 module.exports = router;
