@@ -22,7 +22,7 @@ class MainController {
         console.log(req.params.id);
         if (req.params.id != null) {
           let pam_id = req.params.id;
-          var sql = `call sp_get_pam_by_id('${pam_id}')`;
+          var sql = `call sp_get_pam_by_id(${pam_id})`;
           mysql.query(sql, (error, data, fields) => {
             if (error) {
               res.status(500);
@@ -136,7 +136,7 @@ class MainController {
           req.params.id != null
         ) {
           let pam_id = req.params.id;
-          var sql = `call sp_delete_pam_by_id('${pam_id}');`;
+          var sql = `call sp_delete_pam_by_id(${pam_id});`;
           mysql.query(sql, (error, data, fields) => {
             if (error) {
               res.status(500);
@@ -156,6 +156,56 @@ class MainController {
           console.log("Por favor llena todos los datos!");
         }
       }
+
+      async getPamByGroupId(req, res) {
+        console.log("Get Pam by group id");
+        console.log(req.params.id);
+        if (req.params.id != null) {
+          let group_id = req.params.id;
+          var sql = `call sp_get_pams_by_group_id(${group_id})`;
+          mysql.query(sql, (error, data, fields) => {
+            if (error) {
+              res.status(500);
+              res.send(error.message);
+              console.log(error.message);
+            } else {
+              console.log(data[0]);
+              res.json({
+                pam: data[0],
+              });
+            }
+          });
+        } else {
+          res.send("Por favor llena todos los datos!");
+          console.log("Por favor llena todos los datos!");
+        }
+      }
+
+      async getPamByDoctorId(req, res) {
+        console.log("Get Pam by doctor id");
+        console.log(req.params.id);
+        if (req.params.id != null) {
+          let doctor_id = req.params.id;
+          var sql = `call sp_get_pam_by_doctor_id(${doctor_id})`;
+          mysql.query(sql, (error, data, fields) => {
+            if (error) {
+              res.status(500);
+              res.send(error.message);
+              console.log(error.message);
+            } else {
+              console.log(data[0]);
+              res.json({
+                pam: data[0],
+              });
+            }
+          });
+        } else {
+          res.send("Por favor llena todos los datos!");
+          console.log("Por favor llena todos los datos!");
+        }
+      }
+
+
     }
 
 
