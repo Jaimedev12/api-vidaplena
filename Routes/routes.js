@@ -5,6 +5,10 @@ const genderController = require('../controllers/genderController');
 const personController = require('../controllers/personController');
 const healthDataController = require('../controllers/healthDataController');
 const pamGroupController = require('../controllers/pamGroupController');
+const pamTestController = require('../controllers/pamTestController');
+const pamTestResultController = require('../controllers/pamTestResultController');
+const pamTestAnswerController = require('../controllers/pamTestAnswerController');
+const answerController = require('../controllers/answerController');
 
 // ----------------- Controllers -----------------
 //const {test} = require('./controllers/testController');
@@ -60,5 +64,33 @@ router.get('/get-pam-group/:id', pamGroupController.getPamGroupById);
 router.post('/add-pam-group', pamGroupController.addPamGroup);
 router.put('/edit-pam-group/:id', pamGroupController.editPamGroupById);
 router.delete('/delete-pam-group/:id', pamGroupController.deletePamGroupById);
+
+//pam test Controller
+router.get('/get-pam-test/:id', pamTestController.getPamTestById);
+router.get('/get-pam-test-by-pam/:id', pamTestController.getPamTestByPamId);
+router.post('/add-pam-test', pamTestController.addPamTest);
+router.put('/edit-pam-test/:id', pamTestController.editPamTestById);
+router.delete('/delete-pam-test/:id', pamTestController.deletePamTestById);
+
+//pam test result Controller
+router.get('/get-pam-test-result/:id', pamTestResultController.getPamTestResultById);
+router.post('/add-pam-test-result', pamTestResultController.addPamTestResult);
+router.put('/edit-pam-test-result/:id', pamTestResultController.editPamTestResultById);
+router.delete('/delete-pam-test-result/:id', pamTestResultController.deletePamTestResultById);
+
+//pam test answer Controller
+router.get('/get-pam-test-answer/:id', pamTestAnswerController.getPamTestAnswerById);
+router.post('/add-pam-test-answer', pamTestAnswerController.addPamTestAnswer);
+router.put('/edit-pam-test-answer/:id', pamTestAnswerController.editPamTestAnswerById);
+router.delete('/delete-pam-test-answer/:id', pamTestAnswerController.deletePamTestAnswerById);
+router.get('/get-pam-test-answer-by-test/:id', pamTestAnswerController.getPamTestAnswerByTestId);
+
+//answer Controller
+router.get('/get-answer/:id', answerController.getAnswerById);
+router.get('/get-answer-by-question/:id', answerController.getAnswerByQuestionId);
+router.post('/add-answer', answerController.addAnswer);
+router.put('/edit-answer/:id', answerController.editAnswerById);
+router.delete('/delete-answer/:id', answerController.deleteAnswerById);
+
 
 module.exports = router;
