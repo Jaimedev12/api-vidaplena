@@ -186,7 +186,7 @@ class MainController {
         console.log(req.params.id);
         if (req.params.id != null) {
           let doctor_id = req.params.id;
-          var sql = `call sp_get_pam_by_doctor_id(${doctor_id})`;
+          var sql = `call sp_get_pams_by_doctor_id(${doctor_id})`;
           mysql.query(sql, (error, data, fields) => {
             if (error) {
               res.status(500);
