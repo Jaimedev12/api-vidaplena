@@ -5,6 +5,7 @@ const roleController = require('./controllers/roleController');
 const genderController = require('./controllers/genderController');
 const groupTypeController = require('./controllers/groupTypeController')
 const dimensionController = require('./controllers/dimensionController');
+const instructionController = require('./controllers/instructionController');
 
 // ----------------- Controllers -----------------
 //const {test} = require('./controllers/testController');
@@ -62,5 +63,13 @@ router.get('/get-dimension/:id', dimensionController.getDimensionById);
 router.post('/add-dimension', dimensionController.addDimension);
 router.put('/edit-dimension/:id', dimensionController.editDimensionById);
 router.delete('/delete-dimension/:id', dimensionController.deleteDimensionById);
+
+
+router.get('/get-instructions', instructionController.getInstructions);
+router.get('/get-instruction/:id', instructionController.getInstructionById);
+router.post('/add-instruction', instructionController.addInstruction);
+router.put('/edit-instruction/:id', instructionController.editInstructionById);
+router.delete('/delete-instruction/:id', instructionController.deleteInstructionById);
+
 
 module.exports = router;
