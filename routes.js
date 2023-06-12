@@ -4,6 +4,7 @@ const personController = require('./controllers/personController');
 const roleController = require('./controllers/roleController');
 const genderController = require('./controllers/genderController');
 const groupTypeController = require('./controllers/groupTypeController')
+const dimensionController = require('./controllers/dimensionController');
 
 // ----------------- Controllers -----------------
 //const {test} = require('./controllers/testController');
@@ -54,5 +55,12 @@ router.get('/get-group-type-by-parent/:id', groupTypeController.getGroupTypesByP
 router.post('/add-group-type', groupTypeController.addGroupType);
 router.put('/edit-group-type/:id', groupTypeController.editGroupTypeById);
 router.delete('/delete-group-type/:id', groupTypeController.deleteGroupTypeById);
+
+
+router.get('/get-dimensions', dimensionController.getDimensions);
+router.get('/get-dimension/:id', dimensionController.getDimensionById);
+router.post('/add-dimension', dimensionController.addDimension);
+router.put('/edit-dimension/:id', dimensionController.editDimensionById);
+router.delete('/delete-dimension/:id', dimensionController.deleteDimensionById);
 
 module.exports = router;
