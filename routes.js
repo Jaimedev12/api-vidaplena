@@ -1,5 +1,6 @@
 const express = require('express');
 const pamController = require('./controllers/pamController');
+const personController = require('./controllers/personController');
 const roleController = require('./controllers/roleController');
 const genderController = require('./controllers/genderController');
 const groupTypeController = require('./controllers/groupTypeController')
