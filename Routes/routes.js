@@ -3,6 +3,9 @@ const pamController = require('../controllers/pamController');
 const roleController = require('../controllers/roleController');
 const genderController = require('../controllers/genderController');
 const personController = require('../controllers/personController');
+const groupTypeController = require('../controllers/groupTypeController')
+const dimensionController = require('../controllers/dimensionController');
+const instructionController = require('../controllers/instructionController');
 const healthDataController = require('../controllers/healthDataController');
 const pamGroupController = require('../controllers/pamGroupController');
 const pamTestController = require('../controllers/pamTestController');
@@ -91,6 +94,28 @@ router.get('/get-answer-by-question/:id', answerController.getAnswerByQuestionId
 router.post('/add-answer', answerController.addAnswer);
 router.put('/edit-answer/:id', answerController.editAnswerById);
 router.delete('/delete-answer/:id', answerController.deleteAnswerById);
+
+//group type Controller
+router.get('/get-group-types', groupTypeController.getGroupTypes);
+router.get('/get-group-type/:id', groupTypeController.getGroupTypeById);
+router.get('/get-group-type-by-parent/:id', groupTypeController.getGroupTypesByParentId);
+router.post('/add-group-type', groupTypeController.addGroupType);
+router.put('/edit-group-type/:id', groupTypeController.editGroupTypeById);
+router.delete('/delete-group-type/:id', groupTypeController.deleteGroupTypeById);
+
+//dimension Controller
+router.get('/get-dimensions', dimensionController.getDimensions);
+router.get('/get-dimension/:id', dimensionController.getDimensionById);
+router.post('/add-dimension', dimensionController.addDimension);
+router.put('/edit-dimension/:id', dimensionController.editDimensionById);
+router.delete('/delete-dimension/:id', dimensionController.deleteDimensionById);
+
+//instruction Controller
+router.get('/get-instructions', instructionController.getInstructions);
+router.get('/get-instruction/:id', instructionController.getInstructionById);
+router.post('/add-instruction', instructionController.addInstruction);
+router.put('/edit-instruction/:id', instructionController.editInstructionById);
+router.delete('/delete-instruction/:id', instructionController.deleteInstructionById);
 
 
 module.exports = router;
