@@ -24,7 +24,7 @@ app.use(cors({
 app.use('/', routes);
 
 
-let port = 3006;
+let port = 3010;
 
 // Listen for requests
 app.listen(port, () => {

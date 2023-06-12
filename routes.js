@@ -2,6 +2,7 @@ const express = require('express');
 const pamController = require('./controllers/pamController');
 const roleController = require('./controllers/roleController');
 const genderController = require('./controllers/genderController');
+const groupTypeController = require('./controllers/groupTypeController')
 
 // ----------------- Controllers -----------------
 //const {test} = require('./controllers/testController');
@@ -32,5 +33,13 @@ router.get('/get-gender/:id', genderController.getGenderById);
 router.post('/add-gender', genderController.addGender);
 router.put('/edit-gender/:id', genderController.editGenderById);
 router.delete('/delete-gender/:id', genderController.deleteGenderById);
+
+
+router.get('/get-group-types', groupTypeController.getGroupTypes);
+router.get('/get-group-type/:id', groupTypeController.getGroupTypeById);
+router.get('/get-group-type-by-parent/:id', groupTypeController.getGroupTypesByParentId);
+router.post('/add-group-type', groupTypeController.addGroupType);
+router.put('/edit-group-type/:id', groupTypeController.editGroupTypeById);
+router.delete('/delete-group-type/:id', groupTypeController.deleteGroupTypeById);
 
 module.exports = router;
