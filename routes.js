@@ -6,6 +6,7 @@ const genderController = require('./controllers/genderController');
 const groupTypeController = require('./controllers/groupTypeController')
 const dimensionController = require('./controllers/dimensionController');
 const instructionController = require('./controllers/instructionController');
+const recommendationController = require('./controllers/recommendationController');
 
 // ----------------- Controllers -----------------
 //const {test} = require('./controllers/testController');
@@ -70,6 +71,13 @@ router.get('/get-instruction/:id', instructionController.getInstructionById);
 router.post('/add-instruction', instructionController.addInstruction);
 router.put('/edit-instruction/:id', instructionController.editInstructionById);
 router.delete('/delete-instruction/:id', instructionController.deleteInstructionById);
+
+
+router.get('/get-recommendations', recommendationController.getRecommendations);
+router.get('/get-recommendation/:id', recommendationController.getRecommendationById);
+router.post('/add-recommendation', recommendationController.addRecommendation);
+router.put('/edit-recommendation/:id', recommendationController.editRecommendationById);
+router.delete('/delete-recommendation/:id', recommendationController.deleteRecommendationById);
 
 
 module.exports = router;
