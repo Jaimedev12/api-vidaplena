@@ -11,8 +11,11 @@ const connection = mysql.createConnection({
 
 // open the MySQL connection
 connection.connect(error => {
-    if (error) throw error;
-    console.log("Successfully connected to the database.");
+    if (error) {
+      console.log("Hubo un error al conectarse a la base de datos");
+    } else {
+      console.log("Successfully connected to the database.");
+    }
 });
 
 module.exports = connection;
