@@ -23,6 +23,29 @@ class MainController {
 
 }
 
+async getColorFromTestResultId(req, res) {
+    console.log("Get Color by Test Result Id");
+    if (req.params.id != null) {
+      let id = req.params.id;
+      var sql = `call sp_get_color_from_pam_test_result_id('${id}');`;
+      mysql.query(sql, (error, data, fields) => {
+        if (error) {
+          res.status(500);
+          res.send(error.message);
+          console.log(error.message);
+        } else {
+          console.log("Color listed successfully");
+          res.json({
+            color: data[0],
+          });
+        }
+      });
+    } else {
+      res.send("Por favor llena todos los datos: \n id");
+      console.log("Por favor llena todos los datos: \n id");
+    }
+}
+
 async addPamTestResult(req, res) {
     console.log("Add Pam Test Result");
     console.log(req.body);

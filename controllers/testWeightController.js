@@ -122,6 +122,30 @@ class MainController {
     }
   }
 
+  async getTestWeightById(req, res) {
+    console.log("Get Test Weight by Id");
+    if (req.params.id != null) {
+      let id = req.params.id;
+      var sql = `call sp_get_test_weight_by_id('${id}');`;
+      mysql.query(sql, (error, data, fields) => {
+        if (error) {
+          res.status(500);
+          res.send(error.message);
+          console.log(error.message);
+        } else {
+          console.log("Test Weight listed successfully");
+          res.json({
+            test_weight: data[0],
+          });
+        }
+      });
+    } else {
+      res.send("Por favor llena todos los datos: \n id");
+      console.log("Por favor llena todos los datos: \n id");
+    }
+  }
+
+  
 
 }
 
