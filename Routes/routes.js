@@ -71,6 +71,7 @@ router.get('/get-pam-group/:id', pamGroupController.getPamGroupById);
 router.post('/add-pam-group', pamGroupController.addPamGroup);
 router.put('/edit-pam-group/:id', pamGroupController.editPamGroupById);
 router.delete('/delete-pam-group/:id', pamGroupController.deletePamGroupById);
+router.get('/get-pam-group-by-group-parent/:id', pamGroupController.getPamGroupByGroupParentId);
 
 //pam test Controller
 router.get('/get-pam-test/:id', pamTestController.getPamTestById);

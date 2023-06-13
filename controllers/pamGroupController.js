@@ -37,6 +37,26 @@ class MainController {
         }
     }
 
+    async getPamGroupByGroupParentId(req, res) {
+        console.log("Get Pam Group By Group Parent Id");
+        if (req.params.id != null) {
+            let group_parent_id = req.params.id;
+            var sql = `call sp_get_group_by_group_parent_id(${group_parent_id});`;
+            mysql.query(sql, (error, data, fields) => {
+                if (error) {
+                    res.status(500);
+                    res.send(error.message);
+                } else {
+                    console.log(data[0]);
+                    res.json({
+                        pam_group: data[0],
+                    });
+                }
+            });
+        }
+
+    }
+
     async addPamGroup(req, res) {
         console.log("Add Pam Group");
         console.log(req.body);
