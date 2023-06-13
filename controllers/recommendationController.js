@@ -122,7 +122,31 @@ class MainController {
     }
   }
 
+  async getRecommendationByTestResult(req, res) {
+    console.log("Get Recommendation by Test Result");
+    if (req.params.id != null) {
+      let id = req.params.id;
+      var sql = `call sp_get_recommendation_id_from_pam_test_result_id('${id}');`;
+      mysql.query(sql, (error, data, fields) => {
+        if (error) {
+          res.status(500);
+          res.send(error.message);
+          console.log(error.message);
+        } else {
+          console.log("Recommendation listed successfully");
+          res.json({
+            recommendation: data[0],
+          });
+        }
+      });
+    } else {
+      res.send("Por favor llena todos los datos: \n id");
+      console.log("Por favor llena todos los datos: \n id");
+    }
+  }
+
 }
+
 
 const recommendationController = new MainController();
 module.exports = recommendationController;
