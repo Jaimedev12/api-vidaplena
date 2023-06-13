@@ -87,6 +87,7 @@ router.post('/add-pam-test-result', pamTestResultController.addPamTestResult);
 router.put('/edit-pam-test-result/:id', pamTestResultController.editPamTestResultById);
 router.delete('/delete-pam-test-result/:id', pamTestResultController.deletePamTestResultById);
 router.get('/get-color-from-test-result/:id', pamTestResultController.getColorFromTestResultId);
+router.get('/get-description-from-test-result/:id', pamTestResultController.getDescriptionFromTestResultId);
 
 //pam test answer Controller
 router.get('/get-pam-test-answer/:id', pamTestAnswerController.getPamTestAnswerById);

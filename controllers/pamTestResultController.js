@@ -36,7 +36,30 @@ async getColorFromTestResultId(req, res) {
         } else {
           console.log("Color listed successfully");
           res.json({
-            color: data[0],
+            color: data[0][0]["color"],
+          });
+        }
+      });
+    } else {
+      res.send("Por favor llena todos los datos: \n id");
+      console.log("Por favor llena todos los datos: \n id");
+    }
+}
+
+async getDescriptionFromTestResultId(req, res) {
+    console.log("Get Description by Test Result Id");
+    if (req.params.id != null) {
+      let id = req.params.id;
+      var sql = `call sp_get_description_from_pam_test_result_id('${id}');`;
+      mysql.query(sql, (error, data, fields) => {
+        if (error) {
+          res.status(500);
+          res.send(error.message);
+          console.log(error.message);
+        } else {
+          console.log("Description listed successfully");
+          res.json({
+            description: data[0][0]["description"],
           });
         }
       });
@@ -128,6 +151,7 @@ async deletePamTestResultById(req, res) {
     }
 
 }
+
 }
 
 const pamTestResultController = new MainController();

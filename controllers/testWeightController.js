@@ -1,17 +1,3 @@
-/*
-
-{
-    "test_id": 1,
-    "min_weight": 0,
-    "max_weight": 11,
-    "description": "Demencia severa",
-    "color": "Rojo",
-    "gender_id": 1,
-    "recommendation_id": null
-}
-
-*/
-
 const mysql = require("../database/db");
 
 class MainController {
