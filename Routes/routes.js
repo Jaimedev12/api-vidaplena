@@ -129,11 +129,11 @@ router.put('/edit-recommendation/:id', recommendationController.editRecommendati
 router.delete('/delete-recommendation/:id', recommendationController.deleteRecommendationById);
 
 //question Controller
-router.get('/get-questions', questionController.getQuestions); // SIMON
-router.get('/get-question/:id', questionController.getQuestionById); // SIMON
-router.get('/get-questions-by-test/:id', questionController.getQuestionsByTestId); // SIMON
-router.post('/add-question', questionController.addQuestion); // SIMON
-router.put('/edit-question/:id', questionController.editQuestionById); // SIMON
+router.get('/get-questions', questionController.getQuestions);
+router.get('/get-question/:id', questionController.getQuestionById);
+router.get('/get-questions-by-test/:id', questionController.getQuestionsByTestId);
+router.post('/add-question', questionController.addQuestion);
+router.put('/edit-question/:id', questionController.editQuestionById);
 router.delete('/delete-question/:id', questionController.deleteQuestionById);
 
 module.exports = router;
