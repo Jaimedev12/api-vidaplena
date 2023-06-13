@@ -13,6 +13,7 @@ const pamTestResultController = require('../controllers/pamTestResultController'
 const pamTestAnswerController = require('../controllers/pamTestAnswerController');
 const answerController = require('../controllers/answerController');
 const recommendationController = require('../controllers/recommendationController');
+const testController = require('../controllers/testController');
 
 // ----------------- Controllers -----------------
 //const {test} = require('./controllers/testController');
@@ -125,5 +126,13 @@ router.get('/get-recommendation/:id', recommendationController.getRecommendation
 router.post('/add-recommendation', recommendationController.addRecommendation);
 router.put('/edit-recommendation/:id', recommendationController.editRecommendationById);
 router.delete('/delete-recommendation/:id', recommendationController.deleteRecommendationById);
+
+//test Controller
+router.get('/get-tests', testController.getTests);
+router.get('/get-test/:id', testController.getTestById);
+router.get('/get-tests-by-dimension/:id', testController.getTestsByDimensionId);
+router.post('/add-test', testController.addTest);
+router.put('/edit-test/:id', testController.editTestById);
+router.delete('/delete-test/:id', testController.deleteTestById);
 
 module.exports = router;
