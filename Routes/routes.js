@@ -12,6 +12,7 @@ const pamTestController = require('../controllers/pamTestController');
 const pamTestResultController = require('../controllers/pamTestResultController');
 const pamTestAnswerController = require('../controllers/pamTestAnswerController');
 const answerController = require('../controllers/answerController');
+const recommendationController = require('../controllers/recommendationController');
 
 // ----------------- Controllers -----------------
 //const {test} = require('./controllers/testController');
@@ -117,5 +118,11 @@ router.post('/add-instruction', instructionController.addInstruction);
 router.put('/edit-instruction/:id', instructionController.editInstructionById);
 router.delete('/delete-instruction/:id', instructionController.deleteInstructionById);
 
+// recoommendation Controller
+router.get('/get-recommendations', recommendationController.getRecommendations);
+router.get('/get-recommendation/:id', recommendationController.getRecommendationById);
+router.post('/add-recommendation', recommendationController.addRecommendation);
+router.put('/edit-recommendation/:id', recommendationController.editRecommendationById);
+router.delete('/delete-recommendation/:id', recommendationController.deleteRecommendationById);
 
 module.exports = router;
