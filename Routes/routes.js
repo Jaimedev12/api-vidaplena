@@ -121,6 +121,7 @@ router.delete('/delete-instruction/:id', instructionController.deleteInstruction
 // recoommendation Controller
 router.get('/get-recommendations', recommendationController.getRecommendations);
 router.get('/get-recommendation/:id', recommendationController.getRecommendationById);
+router.get('/get-recommendation-by-test-result/:id', recommendationController.getRecommendationByTestResult);
 router.post('/add-recommendation', recommendationController.addRecommendation);
 router.put('/edit-recommendation/:id', recommendationController.editRecommendationById);
 router.delete('/delete-recommendation/:id', recommendationController.deleteRecommendationById);
