@@ -15,6 +15,7 @@ const answerController = require('../controllers/answerController');
 const recommendationController = require('../controllers/recommendationController');
 const questionController = require('../controllers/questionController');
 const testController = require('../controllers/testController');
+const testWeightController = require('../controllers/testWeightController');
 
 // ----------------- Controllers -----------------
 //const {test} = require('./controllers/testController');
@@ -144,5 +145,12 @@ router.get('/get-tests-by-dimension/:id', testController.getTestsByDimensionId);
 router.post('/add-test', testController.addTest);
 router.put('/edit-test/:id', testController.editTestById);
 router.delete('/delete-test/:id', testController.deleteTestById);
+
+// test weight Controller
+router.get('/get-test-weight/:id', testWeightController.getTestWeightById);
+router.post('/add-test-weight', testWeightController.addTestWeight);
+router.put('/edit-test-weight/:id', testWeightController.editTestWeightById);
+router.delete('/delete-test-weight/:id', testWeightController.deleteTestWeightById);
+
 
 module.exports = router;
