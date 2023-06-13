@@ -1,13 +1,28 @@
 const mysql = require("../database/db");
 
+
+/*
+
+  {
+      "test_id": 1,
+      "question": "Escriba una frase:",
+      "sub_question": ""
+  }
+
+*/
+
 class MainController {
-  async addRecommendation(req, res) {
-    console.log("Add Recommendation");
+  async addQuestion(req, res) {
+    console.log("Add Question");
     if (
-      req.body.recommendation != null
+      req.body.test_id != null &&
+      req.body.question != null
     ) {
-      let recommendation = req.body.recommendation;
-      var sql = `call sp_add_recommendation('${recommendation}');`;
+      let test_id = req.body.test_id;
+      let question = req.body.question;
+      let sub_question;
+      (req.body.sub_question != null) ? sub_question = `'${req.body.sub_question}'` : sub_question = null;
+      var sql = `call sp_add_question('${test_id}', '${question}', ${sub_question});`;
       mysql.query(sql, (error, data, fields) => {
         if (error) {
           res.status(500);
@@ -17,22 +32,22 @@ class MainController {
           console.log(data);
           res.json({
             status: 200,
-            message: "Recommendation uploaded successfully",
+            message: "Question uploaded successfully",
             affectedRows: data.affectedRows,
           });
         }
       });
     } else {
-      res.send("Por favor llena todos los datos: \n recommendation");
-      console.log("Por favor llena todos los datos: \n recommendation");
+      res.send("Por favor llena todos los datos: \n test_id, question");
+      console.log("Por favor llena todos los datos: \n test_id, question");
     }
   }
 
-  async deleteRecommendationById(req, res) {
-    console.log("Delete Recommendation");
+  async deleteQuestionById(req, res) {
+    console.log("Delete Question");
     if (req.params.id != null) {
       let id = req.params.id;
-      var sql = `call sp_delete_recommendation_by_id('${id}');`;
+      var sql = `call sp_delete_question_by_id('${id}');`;
       mysql.query(sql, (error, data, fields) => {
         if (error) {
           res.status(500);
@@ -42,7 +57,7 @@ class MainController {
           console.log(data);
           res.json({
             status: 200,
-            message: "Recommendation deleted successfully",
+            message: "Question deleted successfully",
             affectedRows: data.affectedRows,
           });
         }
@@ -53,15 +68,19 @@ class MainController {
     }
   }
 
-  async editRecommendationById(req, res) {
-    console.log("Edit recommendation");
+  async editQuestionById(req, res) {
+    console.log("Edit Question");
     if (
       req.params.id != null &&
-      req.body.recommendation != null
+      req.body.test_id != null &&
+      req.body.question != null
     ) {
       let id = req.params.id;
-      let recommendation = req.body.recommendation;
-      var sql = `call sp_edit_recommendation_by_id('${id}','${recommendation}');`;
+      let test_id = req.body.test_id;
+      let question = req.body.question;
+      let sub_question;
+      (req.body.sub_question != null) ? sub_question = `'${req.body.sub_question}'` : sub_question = null;
+      var sql = `call sp_edit_question_by_id('${id}', '${test_id}', '${question}', ${sub_question});`;
       mysql.query(sql, (error, data, fields) => {
         if (error) {
           res.status(500);
@@ -71,48 +90,48 @@ class MainController {
           console.log(data);
           res.json({
             status: 200,
-            message: "Recommendation edited successfully",
+            message: "Question edited successfully",
             affectedRows: data.affectedRows,
           });
         }
       });
     } else {
-      res.send("Por favor llena todos los datos: \n id, recommendation");
-      console.log("Por favor llena todos los datos: \n id, recommendation");
+      res.send("Por favor llena todos los datos: \n id, test_id, question");
+      console.log("Por favor llena todos los datos: \n id, test_id, question");
     }
   }
 
-  async getRecommendations(req, res) {
-    console.log("Get Recommendations");
-    var sql = `call sp_get_recommendations();`;
+  async getQuestions(req, res) {
+    console.log("Get Questions");
+    var sql = `call sp_get_questions();`;
     mysql.query(sql, (error, data, fields) => {
       if (error) {
         res.status(500);
         res.send(error.message);
         console.log(error.message);
       } else {
-        console.log("Recommendations listed successfully");
+        console.log("Questions listed successfully");
         res.json({
-          recommendations: data[0],
+          questions: data[0],
         });
       }
     });
   }
 
-  async getRecommendationById(req, res) {
-    console.log("Get Recommendation by Id");
+  async getQuestionById(req, res) {
+    console.log("Get Question by Id");
     if (req.params.id != null) {
       let id = req.params.id;
-      var sql = `call sp_get_recommendation_by_id('${id}');`;
+      var sql = `call sp_get_question_by_id('${id}');`;
       mysql.query(sql, (error, data, fields) => {
         if (error) {
           res.status(500);
           res.send(error.message);
           console.log(error.message);
         } else {
-          console.log("Recommendation listed successfully");
+          console.log("Question listed successfully");
           res.json({
-            recommendation: data[0],
+            question: data[0],
           });
         }
       });
@@ -122,20 +141,20 @@ class MainController {
     }
   }
 
-  async getRecommendationByTestResult(req, res) {
-    console.log("Get Recommendation by Test Result");
+  async getQuestionsByTestId(req, res) {
+    console.log("Get Questions by Test Id");
     if (req.params.id != null) {
       let id = req.params.id;
-      var sql = `call sp_get_recommendation_id_from_pam_test_result_id('${id}');`;
+      var sql = `call sp_get_questions_by_test_id('${id}');`;
       mysql.query(sql, (error, data, fields) => {
         if (error) {
           res.status(500);
           res.send(error.message);
           console.log(error.message);
         } else {
-          console.log("Recommendation listed successfully");
+          console.log("Questions listed successfully");
           res.json({
-            recommendation: data[0],
+            questions: data[0],
           });
         }
       });
@@ -147,6 +166,5 @@ class MainController {
 
 }
 
-
-const recommendationController = new MainController();
-module.exports = recommendationController;
+const questionController = new MainController();
+module.exports = questionController;

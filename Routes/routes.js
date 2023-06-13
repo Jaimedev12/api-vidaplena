@@ -13,6 +13,7 @@ const pamTestResultController = require('../controllers/pamTestResultController'
 const pamTestAnswerController = require('../controllers/pamTestAnswerController');
 const answerController = require('../controllers/answerController');
 const recommendationController = require('../controllers/recommendationController');
+const questionController = require('../controllers/questionController');
 const testController = require('../controllers/testController');
 
 // ----------------- Controllers -----------------
@@ -123,9 +124,18 @@ router.delete('/delete-instruction/:id', instructionController.deleteInstruction
 // recoommendation Controller
 router.get('/get-recommendations', recommendationController.getRecommendations);
 router.get('/get-recommendation/:id', recommendationController.getRecommendationById);
+router.get('/get-recommendation-by-test-result/:id', recommendationController.getRecommendationByTestResult);
 router.post('/add-recommendation', recommendationController.addRecommendation);
 router.put('/edit-recommendation/:id', recommendationController.editRecommendationById);
 router.delete('/delete-recommendation/:id', recommendationController.deleteRecommendationById);
+
+//question Controller
+router.get('/get-questions', questionController.getQuestions); // SIMON
+router.get('/get-question/:id', questionController.getQuestionById); // SIMON
+router.get('/get-questions-by-test/:id', questionController.getQuestionsByTestId); // SIMON
+router.post('/add-question', questionController.addQuestion); // SIMON
+router.put('/edit-question/:id', questionController.editQuestionById); // SIMON
+router.delete('/delete-question/:id', questionController.deleteQuestionById);
 
 //test Controller
 router.get('/get-tests', testController.getTests);
