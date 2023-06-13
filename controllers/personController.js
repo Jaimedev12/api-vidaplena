@@ -239,7 +239,29 @@ async getPersonsByName(req, res) {
 
 }
 
-
+async getPersonsByEmail(req, res) {
+  console.log("Get Person by email");
+  console.log(req.body);
+  if(req.body.email != null){
+    let email = req.body.email;
+    var sql = `call sp_get_person_by_email('${email}');`;
+  mysql.query(sql, (error, data, fields) => {
+    if (error) {
+      res.status(500);
+      res.send(error.message);
+    }else{
+      console.log(data[0]);
+      res.json({
+        person: data[0],
+      });
+    }
+});
+  }
+  else {
+    res.send("Por favor llena todos los datos!");
+    console.log("Por favor llena todos los datos!");
+}
+}
 }
 
 const personController = new MainController();

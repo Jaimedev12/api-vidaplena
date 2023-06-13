@@ -12,7 +12,6 @@ const pamTestController = require('../controllers/pamTestController');
 const pamTestResultController = require('../controllers/pamTestResultController');
 const pamTestAnswerController = require('../controllers/pamTestAnswerController');
 const answerController = require('../controllers/answerController');
-
 // ----------------- Controllers -----------------
 //const {test} = require('./controllers/testController');
 
@@ -40,6 +39,7 @@ router.delete('/delete-person/:id', personController.deletePerson);
 router.get('/get-persons-by-role/:id', personController.getPersonsByRole);
 router.get('/get-persons-by-gender/:id', personController.getPersonsByGender);
 router.get('/get-persons-by-name', personController.getPersonsByName);
+router.get('/get-person-by-email', personController.getPersonsByEmail);
 
 // role Controller
 router.get('/get-roles', roleController.getRoles);
