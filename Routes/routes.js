@@ -14,6 +14,7 @@ const answerController = require('../controllers/answerController');
 const recommendationController = require('../controllers/recommendationController');
 const questionController = require('../controllers/questionController');
 const testController = require('../controllers/testController');
+const testWeightController = require('../controllers/testWeightController');
 
 // ----------------- Controllers -----------------
 //const {test} = require('./controllers/testController');
@@ -70,6 +71,7 @@ router.get('/get-pam-group/:id', pamGroupController.getPamGroupById);
 router.post('/add-pam-group', pamGroupController.addPamGroup);
 router.put('/edit-pam-group/:id', pamGroupController.editPamGroupById);
 router.delete('/delete-pam-group/:id', pamGroupController.deletePamGroupById);
+router.get('/get-pam-group-by-group-parent/:id', pamGroupController.getPamGroupByGroupParentId);
 
 //pam test Controller
 router.get('/get-pam-test/:id', pamTestController.getPamTestById);
@@ -84,6 +86,8 @@ router.get('/get-pam-test-by-pam/:id', pamTestController.getPamTestByPamId);
 router.post('/add-pam-test', pamTestController.addPamTest);
 router.put('/edit-pam-test/:id', pamTestController.editPamTestById);
 router.delete('/delete-pam-test/:id', pamTestController.deletePamTestById);
+router.get('/get-color-from-test-result/:id', pamTestResultController.getColorFromTestResultId);
+router.get('/get-description-from-test-result/:id', pamTestResultController.getDescriptionFromTestResultId);
 
 //pam test answer Controller
 router.get('/get-pam-test-answer/:id', pamTestAnswerController.getPamTestAnswerById);
@@ -130,11 +134,11 @@ router.put('/edit-recommendation/:id', recommendationController.editRecommendati
 router.delete('/delete-recommendation/:id', recommendationController.deleteRecommendationById);
 
 //question Controller
-router.get('/get-questions', questionController.getQuestions); // SIMON
-router.get('/get-question/:id', questionController.getQuestionById); // SIMON
-router.get('/get-questions-by-test/:id', questionController.getQuestionsByTestId); // SIMON
-router.post('/add-question', questionController.addQuestion); // SIMON
-router.put('/edit-question/:id', questionController.editQuestionById); // SIMON
+router.get('/get-questions', questionController.getQuestions);
+router.get('/get-question/:id', questionController.getQuestionById);
+router.get('/get-questions-by-test/:id', questionController.getQuestionsByTestId);
+router.post('/add-question', questionController.addQuestion);
+router.put('/edit-question/:id', questionController.editQuestionById);
 router.delete('/delete-question/:id', questionController.deleteQuestionById);
 
 //test Controller
@@ -144,5 +148,12 @@ router.get('/get-tests-by-dimension/:id', testController.getTestsByDimensionId);
 router.post('/add-test', testController.addTest);
 router.put('/edit-test/:id', testController.editTestById);
 router.delete('/delete-test/:id', testController.deleteTestById);
+
+// test weight Controller
+router.get('/get-test-weight/:id', testWeightController.getTestWeightById);
+router.post('/add-test-weight', testWeightController.addTestWeight);
+router.put('/edit-test-weight/:id', testWeightController.editTestWeightById);
+router.delete('/delete-test-weight/:id', testWeightController.deleteTestWeightById);
+
 
 module.exports = router;
