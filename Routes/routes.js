@@ -79,15 +79,8 @@ router.get('/get-pam-test-by-pam/:id', pamTestController.getPamTestByPamId);
 router.post('/add-pam-test', pamTestController.addPamTest);
 router.put('/edit-pam-test/:id', pamTestController.editPamTestById);
 router.delete('/delete-pam-test/:id', pamTestController.deletePamTestById);
-
-//pam test result Controller
-router.get('/get-pam-test/:id', pamTestController.getPamTestById);
-router.get('/get-pam-test-by-pam/:id', pamTestController.getPamTestByPamId);
-router.post('/add-pam-test', pamTestController.addPamTest);
-router.put('/edit-pam-test/:id', pamTestController.editPamTestById);
-router.delete('/delete-pam-test/:id', pamTestController.deletePamTestById);
-router.get('/get-color-from-test-result/:id', pamTestResultController.getColorFromTestResultId);
-router.get('/get-description-from-test-result/:id', pamTestResultController.getDescriptionFromTestResultId);
+router.get('/get-color-from-test/:id', pamTestController.getColorFromTestId);
+router.get('/get-description-from-test/:id', pamTestController.getDescriptionFromTestId);
 
 //pam test answer Controller
 router.get('/get-pam-test-answer/:id', pamTestAnswerController.getPamTestAnswerById);

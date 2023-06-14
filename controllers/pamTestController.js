@@ -145,6 +145,53 @@ async deletePamTestById(req, res) {
       }
 
 }
+
+async getColorFromTestId(req, res) {
+    console.log("Get Color by Test Id");
+    if (req.params.id != null) {
+      let id = req.params.id;
+      var sql = `call sp_get_color_from_pam_test_id('${id}');`;
+      mysql.query(sql, (error, data, fields) => {
+        if (error) {
+          res.status(500);
+          res.send(error.message);
+          console.log(error.message);
+        } else {
+          console.log("Color listed successfully");
+          res.json({
+            color: data[0][0]["color"],
+          });
+        }
+      });
+    } else {
+      res.send("Por favor llena todos los datos: \n id");
+      console.log("Por favor llena todos los datos: \n id");
+    }
+}
+
+async getDescriptionFromTestId(req, res) {
+    console.log("Get Description by Test Id");
+    if (req.params.id != null) {
+      let id = req.params.id;
+      var sql = `call sp_get_description_from_pam_test_id('${id}');`;
+      mysql.query(sql, (error, data, fields) => {
+        if (error) {
+          res.status(500);
+          res.send(error.message);
+          console.log(error.message);
+        } else {
+          console.log("Description listed successfully");
+          res.json({
+            description: data[0][0]["description"],
+          });
+        }
+      });
+    } else {
+      res.send("Por favor llena todos los datos: \n id");
+      console.log("Por favor llena todos los datos: \n id");
+    }
+}
+
 }
 
 const pamTestController = new MainController();
