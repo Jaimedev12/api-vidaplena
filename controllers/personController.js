@@ -243,6 +243,7 @@ async getPersonsByEmail(req, res) {
   console.log("Get Person by email");
   if(req.params.email != null){
     let email = req.params.email;
+    console.log(email);
     var sql = `call sp_get_person_by_email('${email}');`;
   mysql.query(sql, (error, data, fields) => {
     if (error) {
