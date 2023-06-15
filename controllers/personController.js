@@ -217,8 +217,8 @@ async getPersonsByRole(req, res) {
 
 async getPersonsByName(req, res) {
   console.log("Get Person by name");
-  if(req.body.name != null){
-    let name = req.body.name;
+  if(req.params.name != null){
+    let name = req.params.name;
     var sql = `call sp_get_persons_by_name_like('${name}')`;
   mysql.query(sql, (error, data, fields) => {
     if (error) {
@@ -241,9 +241,8 @@ async getPersonsByName(req, res) {
 
 async getPersonsByEmail(req, res) {
   console.log("Get Person by email");
-  console.log(req.body);
-  if(req.body.email != null){
-    let email = req.body.email;
+  if(req.params.email != null){
+    let email = req.params.email;
     var sql = `call sp_get_person_by_email('${email}');`;
   mysql.query(sql, (error, data, fields) => {
     if (error) {

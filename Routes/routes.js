@@ -42,8 +42,8 @@ router.put('/edit-person/:id', personController.editPerson);
 router.delete('/delete-person/:id', personController.deletePerson);
 router.get('/get-persons-by-role/:id', personController.getPersonsByRole);
 router.get('/get-persons-by-gender/:id', personController.getPersonsByGender);
-router.get('/get-persons-by-name', personController.getPersonsByName);
-router.get('/get-person-by-email', personController.getPersonsByEmail);
+router.get('/get-persons-by-name/:name', personController.getPersonsByName);
+router.get('/get-person-by-email/:email', personController.getPersonsByEmail);
 
 // role Controller
 router.get('/get-roles', roleController.getRoles);
