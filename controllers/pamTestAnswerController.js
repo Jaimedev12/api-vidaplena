@@ -47,12 +47,12 @@ async addPamTestAnswer(req, res) {
     console.log("Add Pam Test Answer");
     console.log(req.body);
     if (
-        req.body.pam_test_result_id != null &&
+        req.body.pam_test_id != null &&
         req.body.answer_id != null
     ){
-    let pam_test_result_id = req.body.pam_test_result_id;
+    let pam_test_id = req.body.pam_test_id;
     let answer_id = req.body.answer_id;
-    var sql = `call sp_add_pam_test_answer(${pam_test_result_id}, ${answer_id});`;
+    var sql = `call sp_add_pam_test_answer(${pam_test_id}, ${answer_id});`;
     mysql.query(sql, (error, data, fields) => {
         if (error) {
             res.status(500);

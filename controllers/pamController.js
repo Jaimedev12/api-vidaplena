@@ -228,7 +228,7 @@ async getPamByPersonId(req, res) {
 
       async getPamPersonByRoleId(req, res) {
         console.log("Get Pam and Person by role id");
-        console.log(req.params.id);
+        console.log(req.params.name);
         if (req.params.name != null) {
           let name = req.params.name;
           var sql = `call sp_get_PamPerson_by_role_id('${name}');`;
