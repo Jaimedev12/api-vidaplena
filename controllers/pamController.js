@@ -229,9 +229,11 @@ async getPamByPersonId(req, res) {
       async getPamPersonByRoleId(req, res) {
         console.log("Get Pam and Person by role id");
         console.log(req.params.id);
-        if (req.params.id != null) {
+        if (req.params.id != null &&
+          req.params.name != null) {
           let role_id = req.params.id;
-          var sql = `call sp_get_PamPerson_by_role_id(${role_id});`;
+          let name = req.params.name;
+          var sql = `call sp_get_PamPerson_by_role_id(${role_id}, '${name}');`;
           mysql.query(sql, (error, data, fields) => {
             if (error) {
               res.status(500);
