@@ -226,27 +226,8 @@ async getPamByPersonId(req, res) {
         }
       }
 
-      async getPamsByName(req, res) {
-        console.log("Get Pam by name");
-        console.log(req.params.name);
-        if (req.params.name != null) {
-          let name = req.params.name;
-          var sql = `call sp_get_pams_by_name_like('${name}')`;
-          mysql.query(sql, (error, data, fields) => {
-            if (error) {
-              res.status(500);
-              res.send(error.message);
-              console.log(error.message);
-            } else {
-              console.log(data[0]);
-              res.json({
-                pam: data[0],
-              });
-            }
-          });
-        }
+
     }
-  }
 
 
 
