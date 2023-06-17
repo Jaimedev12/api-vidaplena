@@ -110,7 +110,7 @@ async addPamTestRetrieve(req, res) {
               res.json({
                   status: 200,
                   message: "Pam Test Added Successfully",
-                  inserted_id: data[0].inserted_id,
+                  inserted_id: data[0][0].inserted_id,
               });
           }
       });
