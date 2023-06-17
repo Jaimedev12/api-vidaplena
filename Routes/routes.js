@@ -33,6 +33,8 @@ router.put('/edit-pam/:id', pamController.editPam);
 router.delete('/delete-pam/:id', pamController.deletePam);
 router.get('/get-pams-by-group/:id', pamController.getPamByGroupId);
 router.get('/get-pams-by-doctor/:id', pamController.getPamsByDoctorId);
+router.get('/get-pam-by-person/:id', pamController.getPamByPersonId);
+router.get('/get-pam-person-by-role/:name', pamController.getPamPersonByRoleId);
 
 //person Controller
 router.get('/get-persons', personController.getPersons);

@@ -41,6 +41,27 @@ class MainController {
         }
       }
 
+async getPamByPersonId(req, res) {
+        console.log("Get Pam by person id");
+        if (req.params.id != null) {
+          let person_id = req.params.id;
+          var sql = `call sp_get_pam_by_person_id(${person_id})`;
+          mysql.query(sql, (error, data, fields) => {
+            if (error) {
+              res.status(500);
+              res.send(error.message);
+              console.log(error.message);
+            } else {
+              console.log(data[0]);
+              res.json({
+                pam: data[0],
+              });
+            }
+          });
+      }
+    }
+
+
       async addPam(req, res) {
         console.log("Add Pams RTQ");
         console.log(req.body);
@@ -205,9 +226,27 @@ class MainController {
         }
       }
 
-
+      async getPamPersonByRoleId(req, res) {
+        console.log("Get Pam and Person by role id");
+        console.log(req.params.name);
+        if (req.params.name != null) {
+          let name = req.params.name;
+          var sql = `call sp_get_PamPerson_by_role_id('${name}');`;
+          mysql.query(sql, (error, data, fields) => {
+            if (error) {
+              res.status(500);
+              res.send(error.message);
+              console.log(error.message);
+            } else {
+              console.log(data[0]);
+              res.json({
+                pam: data[0],
+              });
+            }
+          });
+        }
     }
-
+}
 
 
 const pamController = new MainController();
