@@ -111,6 +111,7 @@ class MainController {
           console.log(error.message);
         } else {
           console.log("Dimension listed successfully");
+          console.log(data);  
           res.json({
             dimension: data[0],
           });

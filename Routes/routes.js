@@ -77,6 +77,7 @@ router.get('/get-pam-group-by-group-parent/:id', pamGroupController.getPamGroupB
 router.get('/get-pam-test/:id', pamTestController.getPamTestById);
 router.get('/get-pam-test-by-pam/:id', pamTestController.getPamTestByPamId);
 router.post('/add-pam-test', pamTestController.addPamTest);
+router.post('/add-pam-test-retrieve', )
 router.put('/edit-pam-test/:id', pamTestController.editPamTestById);
 router.delete('/delete-pam-test/:id', pamTestController.deletePamTestById);
 router.get('/get-color-from-test/:id', pamTestController.getColorFromTestId);

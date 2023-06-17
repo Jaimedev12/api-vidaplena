@@ -2,29 +2,29 @@ const mysql = require("../database/db");
 
 class MainController {
 
-    async getPamTestById(req, res) {
-        console.log("Get Pam Test By Id");
-        if (req.params.id != null) {
-            let pam_test_id = req.params.id;
-            var sql = `call sp_get_pam_test_by_id(${pam_test_id});`;
-            mysql.query(sql, (error, data, fields) => {
-            if (error) {
-                res.status(500);
-                res.send(error.message);
-                console.log(error.message);
-            } else {
-                console.log(data[0]);
-                res.json({
-                pam_test: data[0],
-                });
-            }
-            });
-        } else {
-            res.send("Por favor llena todos los datos!");
-            console.log("Por favor llena todos los datos!");
+  async getPamTestById(req, res) {
+      console.log("Get Pam Test By Id");
+      if (req.params.id != null) {
+          let pam_test_id = req.params.id;
+          var sql = `call sp_get_pam_test_by_id(${pam_test_id});`;
+          mysql.query(sql, (error, data, fields) => {
+          if (error) {
+              res.status(500);
+              res.send(error.message);
+              console.log(error.message);
+          } else {
+              console.log(data[0]);
+              res.json({
+              pam_test: data[0],
+              });
           }
+          });
+      } else {
+          res.send("Por favor llena todos los datos!");
+          console.log("Por favor llena todos los datos!");
+        }
 
-}
+  }
 
 async getPamTestByPamId(req, res) {
     console.log("Get Pam Test By Pam Id");
