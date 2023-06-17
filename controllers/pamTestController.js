@@ -85,6 +85,43 @@ async addPamTest(req, res) {
 
 }
 
+async addPamTestRetrieve(req, res) {
+  console.log("Add Pam Test");
+  console.log(req.body);
+  if (
+      req.body.test_id != null &&
+      req.body.test_result != null &&
+      req.body.pam_id != null &&
+      req.body.test_date != null
+      ){
+      let test_id = req.body.test_id;
+      let test_result = req.body.test_result;
+      let pam_id = req.body.pam_id;
+      let test_date = req.body.test_date;
+
+      var sql = `call sp_add_pam_test_retrieve(${test_id}, ${test_result}, ${pam_id}, '${test_date}');`;
+      mysql.query(sql, (error, data, fields) => {
+          if (error) {
+              res.status(500);
+              res.send(error.message);
+              console.log(error.message);
+          } else {
+              console.log(data);
+              res.json({
+                  status: 200,
+                  message: "Pam Test Added Successfully",
+                  inserted_id: data[0].inserted_id,
+              });
+          }
+      });
+
+} else {
+  res.send("Por favor llena todos los datos!");
+  console.log("Por favor llena todos los datos!");
+}
+
+}
+
 async editPamTestById(req, res) {
     console.log("Edit Pam Test By Id");
     console.log(req.body);
